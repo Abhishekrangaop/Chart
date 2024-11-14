@@ -1,0 +1,23 @@
+import matplotlib.pyplot as plt
+import mplfinance as mpf
+import pandas as pd
+
+# Sample data for candlestick chart
+data = {
+    'Date': ['2023-01-01', '2023-01-02', '2023-01-03', '2023-01-04', '2023-01-05'],
+    'Open': [100, 102, 105, 107, 110],
+    'High': [103, 106, 108, 112, 115],
+    'Low': [99, 101, 103, 106, 109],
+    'Close': [102, 105, 107, 110, 113]
+}
+
+# Convert the data into a DataFrame
+df = pd.DataFrame(data)
+df['Date'] = pd.to_datetime(df['Date'])
+df.set_index('Date', inplace=True)
+
+# Create the candlestick chart
+mpf.plot(df, type='candle', style='charles', title='Custom Candlestick Chart', ylabel='Price')
+
+# Display the chart
+plt.show()
